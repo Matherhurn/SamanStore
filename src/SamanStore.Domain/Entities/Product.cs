@@ -10,11 +10,12 @@ public class Product : BaseAduitableEntity, ICommand
     public decimal Price { get; set; }
     public int Count { get; set; }
     public string PictureUrl { get; set; }
+    public bool IsOff { get; set; }
     #endregion
 
     #region  Command Property
     public bool IsActive { get; set; }
-    public string Dummary { get; set; }
+    public string Summary { get; set; }
     public bool IsDelete { get; set; }
     public string Description { get; set; }
     #endregion

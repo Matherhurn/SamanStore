@@ -1,4 +1,5 @@
 using SamanStore.Web;
+using SamanStore.Infrastructure;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 //Configuration
 builder.AddWebServiceCollection();
+builder.Services.AddInfrastructureService(builder.Configuration);
 
 var app = builder.Build();
 

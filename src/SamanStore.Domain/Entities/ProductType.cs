@@ -10,7 +10,7 @@ public class ProductType : BaseAduitableEntity, ICommand
 
     #region  Command Property
     public bool IsActive { get; set; }
-    public string Dummary { get; set; }
+    public string Summary { get; set; }
     public bool IsDelete { get; set; }
     public string Description { get; set; }
     #endregion

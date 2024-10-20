@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SamanStore.Infrastructure.Persistance;
 
@@ -11,9 +12,11 @@ using SamanStore.Infrastructure.Persistance;
 namespace SamanStore.Infrastructure.Migrations
 {
     [DbContext(typeof(SamanStoreDbContext))]
-    partial class SamanStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241020112235_EntityAnnotation")]
+    partial class EntityAnnotation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
