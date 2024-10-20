@@ -1,5 +1,8 @@
 using SamanStore.Web;
 using SamanStore.Infrastructure;
+using SamanStore.Infrastructure.Persistance;
+using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +20,23 @@ builder.Services.AddInfrastructureService(builder.Configuration);
 
 var app = builder.Build();
 
+
+var loggerFactory = app.Services.GetRequiredService<ILoggerFactory>();
+
+
+//auto migration
+try
+{
+    var context = app.Services.GetRequiredService<SamanStoreDbContext>();
+    await context.Database.MigrateAsync();
+
+}
+catch (Exception e)
+{
+    var loggger = loggerFactory.CreateLogger<Program>();
+    loggger.LogError(e,"Erro for Migration");
+
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
