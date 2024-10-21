@@ -24,6 +24,8 @@ public class GenerateSeedData
                         Title = "ProductBrand2",
                     }
                 };
+                await context.ProductBrands.AddRangeAsync(ProductBrands);
+                await context.SaveChangesAsync();
             }
             if (!await context.ProductTypes.AnyAsync())
             {
@@ -38,10 +40,14 @@ public class GenerateSeedData
                         Title = "ProductType2",
                     }
                };
+                await context.ProductTypes.AddRangeAsync(ProductTypes);
+                await context.SaveChangesAsync();
             }
             if (!await context.Products.AnyAsync())
             {
                 var products = FillProducts();
+                await context.Products.AddRangeAsync(products);
+                await context.SaveChangesAsync();
             }
         }
         catch (Exception e)

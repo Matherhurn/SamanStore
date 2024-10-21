@@ -16,14 +16,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Configuration
-builder.AddWebServiceCollection();
 builder.Services.AddInfrastructureService(builder.Configuration);
+builder.AddWebServiceCollection();
 
 var app = builder.Build();
+//get service 
+var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
 
-
-var loggerFactory = app.Services.GetRequiredService<ILoggerFactory>();
-var context = app.Services.GetRequiredService<SamanStoreDbContext>();
+var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+var context = services.GetRequiredService<SamanStoreDbContext>();
 
 //auto migration
 try

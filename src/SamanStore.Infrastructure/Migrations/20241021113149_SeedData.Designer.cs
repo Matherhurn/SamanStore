@@ -12,8 +12,8 @@ using SamanStore.Infrastructure.Persistance;
 namespace SamanStore.Infrastructure.Migrations
 {
     [DbContext(typeof(SamanStoreDbContext))]
-    [Migration("20241020112235_EntityAnnotation")]
-    partial class EntityAnnotation
+    [Migration("20241021113149_SeedData")]
+    partial class SeedData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace SamanStore.Infrastructure.Migrations
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LastModifiedBy")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
                     b.Property<string>("PictureUrl")
@@ -120,7 +120,7 @@ namespace SamanStore.Infrastructure.Migrations
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LastModifiedBy")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
                     b.Property<string>("Summary")
@@ -164,7 +164,7 @@ namespace SamanStore.Infrastructure.Migrations
                     b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LastModifiedBy")
+                    b.Property<int?>("LastModifiedBy")
                         .HasColumnType("int");
 
                     b.Property<string>("Summary")
