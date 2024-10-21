@@ -3,6 +3,7 @@ using SamanStore.Infrastructure;
 using SamanStore.Infrastructure.Persistance;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using SamanStore.Infrastructure.Persistance.SeedData;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,14 +23,13 @@ var app = builder.Build();
 
 
 var loggerFactory = app.Services.GetRequiredService<ILoggerFactory>();
-
+var context = app.Services.GetRequiredService<SamanStoreDbContext>();
 
 //auto migration
 try
 {
-    var context = app.Services.GetRequiredService<SamanStoreDbContext>();
     await context.Database.MigrateAsync();
-
+    await GenerateSeedData.SeedDataAsync(context, loggerFactory);
 }
 catch (Exception e)
 {

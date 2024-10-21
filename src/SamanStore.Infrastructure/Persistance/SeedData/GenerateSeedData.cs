@@ -6,6 +6,7 @@ namespace SamanStore.Infrastructure.Persistance.SeedData;
 
 public class GenerateSeedData
 {
+    #region SeedDataAsync
     public static async Task SeedDataAsync(SamanStoreDbContext context, ILoggerFactory loggerFactory)
     {
         try
@@ -40,7 +41,7 @@ public class GenerateSeedData
             }
             if (!await context.Products.AnyAsync())
             {
-                var products = Products();
+                var products = FillProducts();
             }
         }
         catch (Exception e)
@@ -50,8 +51,10 @@ public class GenerateSeedData
 
         }
     }
+    #endregion
 
-    private static IEnumerable<Product> Products()
+    #region FillProducts
+    private static IEnumerable<Product> FillProducts()
     {
         var products = new List<Product>()
                 {
@@ -94,4 +97,6 @@ public class GenerateSeedData
                 };
         return products;
     }
+    #endregion
+
 }

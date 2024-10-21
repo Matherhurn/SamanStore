@@ -32,9 +32,11 @@ public class SamanStoreDbContext : DbContext
         foreach (var entity in ChangeTracker.Entries<BaseAduitableEntity>())
         {
             entity.Entity.LastModified = DateTime.Now;
+    
             if (entity.State == EntityState.Added)
             {
                 entity.Entity.Created = DateTime.Now;
+                entity.Entity.CreatedBy = 1;
             }
         }
 
@@ -51,6 +53,7 @@ public class SamanStoreDbContext : DbContext
             if (entity.State == EntityState.Added)
             {
                 entity.Entity.Created = DateTime.Now;
+                entity.Entity.CreatedBy = 1;
             }
         }
         return base.SaveChanges();
