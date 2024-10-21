@@ -9,9 +9,9 @@ public class ProductBrand : BaseAduitableEntity,ICommand
     #endregion
 
     #region  Command Property
-    public bool IsActive { get; set; }
-    public string Summary { get; set; }
-    public bool IsDelete { get; set; }
+    public bool IsActive { get; set; } = true;
+    public string Summary { get; set; } 
+    public bool IsDelete { get; set; } = false;
     public string Description { get; set; }
     #endregion
 }
