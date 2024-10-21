@@ -104,5 +104,4 @@ public class GenerateSeedData
         return products;
     }
     #endregion
-
 }
